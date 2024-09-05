@@ -56,7 +56,7 @@ start(5, "apt");
 start(4, "large");
 start(3, "medium");
 start(2, "small");
-start(1, "aprt");
+start(1, "apt");
 start(6, "large");
 start(7, "medium");
 
