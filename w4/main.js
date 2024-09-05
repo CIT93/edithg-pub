@@ -42,7 +42,14 @@ function start(houseHoldMembers, houseSize) {
 }
 
 function displayOutput () {
-    
+    for (arr of cfpData){
+        console.log(arr);
+        const output = document.getElementById("output");
+        const newP = document.createElement("p");
+        newP.textContent = `If your household consists of ${arr[0]} members, your score will be ${arr[2]}. If your house
+        size is ${arr[1]} you will score ${arr[3]} points. Adding your Carbon Footprint Total is ${arr[4]}`;
+        output.appendChild(newP)
+    }
 }
 
 start(5, "apt");
