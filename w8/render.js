@@ -1,4 +1,5 @@
 const TBL = document.getElementById("tab-data");
+let tableRendered = false;
 
 function renderTblHeading() {
   TBL.innerHTML = "";
@@ -55,10 +56,14 @@ function renderTblBody(data) {
 }
 
 function renderTbl(data) {
+  if(!tableRendered){
   const table = renderTblHeading();
   const tbody = renderTblBody(data);
   table.appendChild(tbody);
   TBL.appendChild(table);
+} else{
+tableRendered = true;
+}
 }
 
 
