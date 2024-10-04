@@ -1,8 +1,7 @@
 const TBL = document.getElementById("tab-data");
-let tableRendered = false;
+const FORM = document.getElementById("form");
 
 function renderTblHeading() {
-  TBL.innerHTML = "";
   const table = document.createElement("table");
   const thead = document.createElement("thead");
   const tr = document.createElement("tr"); 
@@ -17,7 +16,7 @@ function renderTblHeading() {
   return table;
 }
 
-function renderTblBtn(index, data){
+function renderTblBtn(obj, index, data){
   const td = document.createElement("td");
   const btnEdit = document.createElement("button");
   const btnDel = document.createElement("button");
@@ -26,13 +25,16 @@ function renderTblBtn(index, data){
   td.appendChild(btnEdit);
   td.appendChild(btnDel);
   btnDel.addEventListener('click', function(e){
-    console.log('Hello from inside the delete button');
-    console.log(e);
     data.splice(index, 1);
     renderTbl(data);
   });
   btnEdit.addEventListener('click', function(e){
-    renderTblBody(data);
+   FORM[1].value = obj.fName;
+   FORM[2].value = obj.lName;
+   FORM[3].value = obj.houseM;
+   FORM[4].value = obj.houseS;
+   data.splice(index, 1);
+    renderTbl(data);
   })
   return td;
 }
@@ -48,7 +50,7 @@ function renderTblBody(data) {
       tr.appendChild(td);
     }
   }
-  const td = renderTblBtn(index, data);
+  const td = renderTblBtn(obj, index, data);
   tr.appendChild(td);
   tbody.appendChild(tr);
   });
@@ -56,15 +58,15 @@ function renderTblBody(data) {
 }
 
 function renderTbl(data) {
-  if(!tableRendered){
-  const table = renderTblHeading();
-  const tbody = renderTblBody(data);
-  table.appendChild(tbody);
-  TBL.appendChild(table);
-} else{
-tableRendered = true;
+  TBL.innerHTML = "";
+  if(data.length !== 0){
+    const table = renderTblHeading();
+    const tbody = renderTblBody(data);
+    table.appendChild(tbody);
+    TBL.appendChild(table);
+  }
 }
-}
+
 
 
 export { renderTbl };
