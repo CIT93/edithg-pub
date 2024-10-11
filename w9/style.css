@@ -18,3 +18,12 @@ html {
   tbody tr:nth-child(odd){
     background-color: rgb(129, 157, 118);
   }
+
+  .error-message {
+    background-color: lightcoral;
+    color: red;
+    border: 1px solid red;
+    padding: 10px;
+    margin-top: 10px;
+    display: none;
+  }

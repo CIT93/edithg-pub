@@ -22,18 +22,19 @@ renderTbl (cfpData);
 
   FORM.addEventListener('submit', (e) => {
     let messages = [];
-    errorElement.innerText = '';
-    if(firstname.value.trim() === ''){
-        messages.push('First name is required');
-        console.log ('first name required')
-    }
-    if(lastname.value.trim() === ''){
-        messages.push('Last name is required')
-    }
+errorElement.innerText = '';
+errorElement.style.display = 'none';
+if(firstname.value.trim() === ''){
+    messages.push('First name is required');
+}
+if(lastname.value.trim() === ''){
+    messages.push('Last name is required')
+}
     if(messages.length > 0){
   e.preventDefault();
-  errorElement.innerText = messages.join(', ')
-    }
+  errorElement.innerText = messages.join(', ');
+  errorElement.style.display = 'block';
+    } else {
   const firstName = FORM.firstname.value;
   const lastName = FORM.lastname.value;
   const houseMembers = parseInt(FORM.housem.value);
@@ -42,5 +43,5 @@ renderTbl (cfpData);
   saveLS(cfpData);
   renderTbl(cfpData);
   FORM.reset();
-
+    }
 });
