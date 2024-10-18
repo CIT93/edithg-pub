@@ -3,7 +3,8 @@ import { determineHouseSizePts, determineHouseHoldPts } from "./cfp.js";
 import { FORM, FNAME, LNAME, SUBMIT } from "./global.js";
 import { saveLS, cfpData } from "./storage.js";
 
-const start = function(firstName, lastName, houseHoldMembers, houseSize) {
+const start = (firstName, lastName, ...addData) => {
+  const [houseHoldMembers, houseSize] = addData
   const houseHoldPTS = determineHouseHoldPts(houseHoldMembers);
   const HouseSizePTS = determineHouseSizePts(houseSize);
   const total = houseHoldPTS + HouseSizePTS;
@@ -21,7 +22,7 @@ const start = function(firstName, lastName, houseHoldMembers, houseSize) {
 renderTbl(cfpData);
 
 //Function to validate a single field
-const validateField = function(event) {
+const validateField = event => {
   const field = event.target.value;
   const fieldId = event.target.id;
   const fieldError = document.getElementById(`${fieldId}Error`);
@@ -40,7 +41,7 @@ FNAME.addEventListener("blur", validateField);
 LNAME.addEventListener("blur", validateField);
 
 
-FORM.addEventListener("submit", function (e) {
+FORM.addEventListener("submit", e => {
   e.preventDefault();
   if (FNAME.value !== "" && LNAME.value !== '') {
     SUBMIT.textContent = '';

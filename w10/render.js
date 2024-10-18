@@ -1,7 +1,7 @@
 import {FORM, TBL} from "./global.js";
 import {saveLS} from "./storage.js";
 
-const renderTblHeading = function() {
+const renderTblHeading = () => {
   const table = document.createElement("table");
   const thead = document.createElement("thead");
   const tr = document.createElement("tr"); 
@@ -16,13 +16,13 @@ const renderTblHeading = function() {
   return table;
 }
 
-const onUpdate = function(index, data) {
+const onUpdate = (index,  data) => {
     data.splice(index, 1);
     saveLS(data);
     renderTbl(data); 
 }
 
-const renderTblBtn = function(obj, index, data){
+const renderTblBtn = (obj, index, data) => {
   const td = document.createElement("td");
   const btnEdit = document.createElement("button");
   const btnDel = document.createElement("button");
@@ -30,10 +30,10 @@ const renderTblBtn = function(obj, index, data){
   btnDel.textContent = "Delete";
   td.appendChild(btnEdit);
   td.appendChild(btnDel);
-  btnDel.addEventListener('click', function(e){
+  btnDel.addEventListener('click', () => {
     onUpdate(index, data);
   });
-  btnEdit.addEventListener('click', function(e){
+  btnEdit.addEventListener('click', () => {
    FORM[1].value = obj.fName;
    FORM[2].value = obj.lName;
    FORM[3].value = obj.houseM;
@@ -43,7 +43,7 @@ const renderTblBtn = function(obj, index, data){
   return td;
 }
 
-const renderTblBody = function(data) {
+const renderTblBody = data => {
   const tbody = document.createElement("tbody");
   data.forEach(function (obj, index) {
   const tr = document.createElement("tr");
@@ -61,7 +61,7 @@ const renderTblBody = function(data) {
   return tbody;
 }
 
-const renderTbl =  function(data) {
+const renderTbl =  data => {
   TBL.innerHTML = "";
   if(data.length !== 0){
     const table = renderTblHeading();
