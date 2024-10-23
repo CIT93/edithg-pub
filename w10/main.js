@@ -3,21 +3,37 @@ import { determineHouseSizePts, determineHouseHoldPts } from "./cfp.js";
 import { FORM, FNAME, LNAME, SUBMIT } from "./global.js";
 import { saveLS, cfpData } from "./storage.js";
 
-const start = (firstName, lastName, ...addData) => {
-  const [houseHoldMembers, houseSize] = addData
-  const houseHoldPTS = determineHouseHoldPts(houseHoldMembers);
-  const HouseSizePTS = determineHouseSizePts(houseSize);
+// const start = (firstName, lastName, ...addData) => {
+//   const [houseHoldMembers, houseSize] = addData
+//   const houseHoldPTS = determineHouseHoldPts(houseHoldMembers);
+//   const HouseSizePTS = determineHouseSizePts(houseSize);
+//   const total = houseHoldPTS + HouseSizePTS;
+//   cfpData.push({
+//     fName: firstName,
+//     lName: lastName,
+//     houseM: houseHoldMembers,
+//     houseS: houseSize,
+//     houseMPTS: houseHoldPTS,
+//     houseSPTS: HouseSizePTS,
+//     cfpTotal: total,
+//   });
+// }
+
+const start = (...i) => {
+  const houseHoldPTS = determineHouseHoldPts(i[2]);
+  const HouseSizePTS = determineHouseSizePts(i[3]);
   const total = houseHoldPTS + HouseSizePTS;
   cfpData.push({
-    fName: firstName,
-    lName: lastName,
-    houseM: houseHoldMembers,
-    houseS: houseSize,
+    fName: i[0],
+    lName: i[1],
+    houseM: i[2],
+    houseS: i[3],
     houseMPTS: houseHoldPTS,
     houseSPTS: HouseSizePTS,
     cfpTotal: total,
   });
 }
+
 
 renderTbl(cfpData);
 

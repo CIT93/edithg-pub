@@ -1,11 +1,12 @@
 import {FORM, TBL} from "./global.js";
 import {saveLS} from "./storage.js";
 
+
 const renderTblHeading = () => {
   const table = document.createElement("table");
   const thead = document.createElement("thead");
   const tr = document.createElement("tr"); 
-    const headingTextArr = ["Name", "Household", "HouseSize", "Footprint", "Action"];
+    const headingTextArr = ["Name", "Household", "HouseSize", "FoodChoice", "Footprint", "Action"];
   headingTextArr.forEach(text => {
     const th = document.createElement("th");
     th.textContent = text;
@@ -34,21 +35,23 @@ const renderTblBtn = (obj, index, data) => {
     onUpdate(index, data);
   });
   btnEdit.addEventListener('click', () => {
-   FORM[1].value = obj.fName;
-   FORM[2].value = obj.lName;
-   FORM[3].value = obj.houseM;
-   FORM[4].value = obj.houseS;
+   FORM[1].value = obj.first;
+   FORM[2].value = obj.last;
+   FORM[3].value = obj.houseMembers;
+   FORM[4].value = obj.houseSize;
+   FORM[5].value = obj.foodChoice;
    onUpdate(index, data);
   })
   return td;
 }
 
+//Renders the body of the table
 const renderTblBody = data => {
   const tbody = document.createElement("tbody");
   data.forEach ((obj, index) => {
   const tr = document.createElement("tr");
   for (const [key, value] of Object.entries(obj)) {
-    if (key !== "lName" && key !== "houseMPTS" && key !== "houseSPTS") {
+    if (key !== "last" && key !== "houseHoldPoints" && key !== "houseSizePoints" && key !== "foodChoicePoints") {
       const td = document.createElement("td");
       td.textContent = value;
       tr.appendChild(td);
@@ -59,7 +62,25 @@ const renderTblBody = data => {
   tbody.appendChild(tr);
   });
   return tbody;
-}
+  }
+
+  // const renderTblBody = data => {
+  //   const tbody = document.createElement("tbody");
+  //   data.forEach ((obj, index) => {
+  //   const tr = document.createElement("tr");
+  //   for (const [key, value] of Object.entries(obj)) {
+  //     if (key !== "lName" && key !== "houseMPTS" && key !== "houseSPTS") {
+  //       const td = document.createElement("td");
+  //       td.textContent = value;
+  //       tr.appendChild(td);
+  //     }
+  //   }
+  //   const td = renderTblBtn(obj, index, data);
+  //   tr.appendChild(td);
+  //   tbody.appendChild(tr);
+  //   });
+  //   return tbody;
+  //   }
 
 const renderTbl =  data => {
   TBL.innerHTML = "";
