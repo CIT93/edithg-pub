@@ -41,11 +41,11 @@ class FP {
     foodChoicePoints() {
       if (this.foodChoice === "domesticDaily") {
         this.foodChoicePoints = 10;
-      } else if (this.foodChoice === "domesticFxWeek") {
+      } else if (this.foodChoice === "domesticWeekly") {
         this.foodChoicePoints = 8;
       } else if (this.foodChoice === "vegetarian") {
         this.foodChoicePoints = 4;
-      } else if (this.foodChoice === "veganWild") {
+      } else if (this.foodChoice === "veganOrWild") {
         this.foodChoicePoints = 2;
       }
     }
