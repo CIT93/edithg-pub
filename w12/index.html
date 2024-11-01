@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="main.js"></script>
+    <title>Week 12 Code Challange</title>
+    <style>
+        html {
+          font-size: 22px;
+        }
+        body {
+          background-color: beige;
+          color: black;
+        }
+
+  /*Style for error messages and invalid field */
+  .error{
+  color: red;
+  }
+  .invalid{
+  border-color: red;
+  }
+      </style>
+</head>
+<body>
+    <form id="form">
+        <fieldset>
+          <legend>Time to get FIT!</legend>
+          <div>
+           <label>Type of Exercise</label>
+              <input type="text" name="exerciseType" id="exerciseType" maxlength="25">
+              <span id="exerciseTypeError" class="error"></span>
+          </div>
+        <div>
+        <label>Target number of Reps</label>
+        <span id="repNumberError" class="error"></span>
+            <select name="repNumber" id="repNumber" required>
+              <option value="">---Select number of reps---</option>
+              <option value="one">1</option>
+              <option value="two">2</option>
+              <option value="three">3</option>
+              <option value="four">4</option>
+              <option value="five">5</option>
+          </select>
+          </div>
+          <div>
+            <label>Time in Minutes</label>
+            <input type="number" name="timeMinutes" id="timeMinutes" required>
+        </div>
+        <button type="submit">Submit</button><br>
+        <span id="submitError" class="error"></span>
+      </fieldset>
+      </form>
+      <div id="output"></div>
+</body>
+</html>
