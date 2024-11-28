@@ -68,10 +68,10 @@ class FP {
     }
 
     calWashingMachine() {
-        if(this.waterConsumePoints === 0) {
-          this.washingMachinePoints = 0;
-        } else {
+        if(this.washingMachine && this.waterConsumePoints > 0) {
           this.washingMachinePoints = this.waterConsumePoints * 2;
+        } else {
+          this.washingMachinePoints = 0;
       }
     }
  
