@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type ="module" defer src="main.js"></script>
+    <title>Week 16 - Carbon Footprint - PRI</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <form id="form">
+      <fieldset>
+        <legend>Calculating Your Carbon Footprint Points</legend>
+        <div>
+         <label>First Name:</label>
+            <input type="text" name="firstname" id="firstName" maxlength="25" >
+            <span id="firstNameError" class="error"></span>
+        </div>
+        <div>
+            <label>Last Name:</label>
+            <input type="text" name="lastname" id="lastName" maxlength="25" >
+            <span id="lastNameError" class="error"></span>
+        </div>
+        <div>
+          <label>Count the members of your household.</label>
+          <input type="number" name="housem" min="1" max="6" required>
+      </div>
+      <div>
+        <label>Consider the size of your home.</label>
+        <select name="houses" required>
+          <option value="">---Please enter size of home---</option>
+          <option value="apt">Apartment</option>
+          <option value="large">Large</option>
+          <option value="medium">Medium</option>
+          <option value="small">Small</option>
+      </select>
+    </div>
+    <div>
+      <label>Evaluate  your food choices.</label>
+      <select name="foodChoice" required>
+        <option value="">---Types of Food---</option>
+        <option value="domesticDaily">Domestic meat daily basis</option>
+        <option value="domesticWeekly">Domestic meat few times per week</option>
+        <option value="vegetarian">Vegetarian</option>
+        <option value="veganOrWild">Vegan or only eat wild meat</option>
+    </select>
+  </div>
+  <div>
+    <label>Evaluate  your food sources.</label>
+    <select name="foodSource" required>
+      <option value="">---Food Sources---</option>
+      <option value="prePackaged">Prepackaged convenience</option>
+      <option value="freshBalance">Balance fresh and convenience</option>
+      <option value="freshLocal">Fresh locally grown</option>
+  </select>
+</div>
+<div>
+  <label>Examine your water consumption.</label>
+  <select name="waterConsume" required>
+    <option value="">---How many times do you run dishwasher or washing machine---</option>
+    <option value="3">More than 9 times per week.</option>
+    <option value="2">Between 4 to 9 times per week</option>
+    <option value="1">Between 1 to 3 times per week</option>
+    <option value="0">Don't have a dishwasher</option>
+  </select>
+  <div>
+    <label for="washingMachine">Do you own a dishwasher AND a washing machine?</label>
+    <input type="checkbox" name="washingMachine" id ="washingMachine">
+  </div>
+</div>
+      <button type="submit">Submit</button><br>
+      <span id="submitError" class="error"></span>
+    </fieldset>
+    </form>
+    <div id="tab-data"> === $0
+    <table id="table-id"></table>
+    </div>
+  </body>
+</html>
