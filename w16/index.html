@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type ="module" defer src="main.js"></script>
-    <title>Week 16 - Carbon Footprint - PRI</title>
+    <title>Week 16 - Carbon Footprint - PUB</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
@@ -58,7 +58,7 @@
   <label>Examine your water consumption.</label>
   <select name="waterConsume" required>
     <option value="">---How many times do you run dishwasher or washing machine---</option>
-    <option value="3">More than 9 times per week.</option>
+    <option value="3">More than 9 times per week</option>
     <option value="2">Between 4 to 9 times per week</option>
     <option value="1">Between 1 to 3 times per week</option>
     <option value="0">Don't have a dishwasher</option>
@@ -67,7 +67,17 @@
     <label for="washingMachine">Do you own a dishwasher AND a washing machine?</label>
     <input type="checkbox" name="washingMachine" id ="washingMachine">
   </div>
-</div>
+  <div>
+    <label>Determine how many household purchases made per year.</label>
+    <select name="housePurchases" required>
+      <option value="">---How many purchases are made per year.---</option>
+      <option value="10">More than 7 items per year</option>
+      <option value="8">Between 5 and 7 items per year</option>
+      <option value="6">Between 3 and 5 items per year</option>
+      <option value="4">Less than 3 items per year</option>
+      <option value="2">Almost nothing or secondhand items.</option>
+    </select>
+    <div>
       <button type="submit">Submit</button><br>
       <span id="submitError" class="error"></span>
     </fieldset>
