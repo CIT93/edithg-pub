@@ -58,6 +58,16 @@ const renderTblBtn = (obj, index, data) => {
    FORM[7].value = obj.waterValue;
    FORM[8].checked = obj.both;
    FORM[9].value = obj.housePurchasesPoints.toString();
+   FORM[10].value = obj.houseWastePoints.toString();
+   FORM[12].checked = obj.recycle.glass;
+   FORM[13].checked = obj.recycle.plastic;
+   FORM[14].checked = obj.recycle.paper;
+   FORM[15].checked = obj.recycle.aluminum;
+   FORM[16].checked = obj.recycle.steel;
+   FORM[17].checked= obj.recycle.food;
+   FORM[19].value = obj.personalVehicle.toString();
+   FORM[20].value = obj.publicTransport.toString();
+   FORM[21].value = obj.flights.toString();
    onUpdate(index, data);
   })
   return td;

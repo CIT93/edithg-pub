@@ -24,6 +24,19 @@ const validateField = event => {
 FNAME.addEventListener("blur", validateField);
 LNAME.addEventListener("blur", validateField);
 
+const determineRecycleItems = e => {
+  const numberChecked = document.querySelectorAll('.recycle:checked').length;
+  return {
+    glass: e.target.glass.checked,
+    plastic: e.target.plastic.checked,
+    paper: e.target.paper.checked,
+    aluminum: e.target.aluminum.checked,
+    steel: e.target.steel.checked,
+    food: e.target.food.checked,
+    recyclePoints: (24-(numberChecked * 4))
+  }
+}
+
 //On submit event
 FORM.addEventListener("submit", e => {
     e.preventDefault();
@@ -40,6 +53,11 @@ FORM.addEventListener("submit", e => {
         e.target.dish_washer.checked ? parseInt(e.target.waterConsume.value) * 2 : parseInt(e.target.waterConsume.value),
         e.target.dish_washer.checked,
         parseInt(e.target.housePurchases.value),
+        parseInt(e.target.houseWaste.value),
+        determineRecycleItems(e),
+        parseInt(e.target.personalVehicle.value),
+        parseInt(e.target.publicTransport.value),
+        parseInt(e.target.flights.value)
       );
       cfpData.push(fpObj);
       saveLS(cfpData);

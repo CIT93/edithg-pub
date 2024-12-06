@@ -1,5 +1,5 @@
 class FP {
-    constructor(first, last, houseMembers, houseSize, foodChoice, foodSource, waterValue, waterConsume, both, housePurchases) {
+    constructor(first, last, houseMembers, houseSize, foodChoice, foodSource, waterValue, waterConsume, both, housePurchases, houseWaste, recycle, personalVehicle, publicTransport, flights) {
       this.first = first;
       this.last = last;
       this.houseMembers = houseMembers;
@@ -10,10 +10,16 @@ class FP {
       this.waterConsumePoints = waterConsume;
       this.both = both;
       this.housePurchasesPoints = housePurchases;
+      this.houseWastePoints = houseWaste;
+      this.recycle = recycle;
+      this.personalVehicle = personalVehicle;
+      this.publicTransport = publicTransport;
+      this.flights= flights;  
       this.calHouseHoldPoints();
       this.calHouseSizePoints();
       this.calFoodChoicePoints();
       this.calFoodSourcePoints();
+      this.calTransportPoints();
       this.calTotal();
     }
     calHouseHoldPoints() {
@@ -56,20 +62,32 @@ class FP {
       }
     }
     calFoodSourcePoints() {
-        if (this.foodSource === "prePackaged") {
-          this.foodSourcePoints = 12;
-        } else if (this.foodSource === "freshBlance") {
-          this.foodSourcePoints = 6;
-        } else if (this.foodSource === "freshLocal") {
-          this.foodSourcePoints = 2;
-        } 
+      if (this.foodSource === "prePackaged") {
+        this.foodSourcePoints = 12;
+      } else if (this.foodSource === "freshBalance") {
+        this.foodSourcePoints = 6;
+      } else if (this.foodSource === "freshLocal") {
+        this.foodSourcePoints = 2;
+      }
     }
- 
-  calTotal(){
-        this.total = this.houseHoldPoints + this.houseSizePoints + this.foodChoicePoints + this.foodSourcePoints + this.waterConsumePoints + this.housePurchasesPoints
- }
 
+    calTransportPoints() {
+      this.tallyTransportPoints = this.personalVehicle + this.publicTransport + this.flights;
+    }
+  
+    calTotal() {
+      this.total =
+        this.houseHoldPoints +
+        this.houseSizePoints +
+        this.foodChoicePoints +
+        this.foodSourcePoints +
+        this.waterConsumePoints +
+        this.housePurchasesPoints +
+        this.recycle.recyclePoints +
+        this.houseWastePoints +
+        this.tallyTransportPoints;
+    }
   }
-
-
+  
   export { FP };
+  
